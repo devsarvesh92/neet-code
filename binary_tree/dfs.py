@@ -1,3 +1,5 @@
+from collections import deque
+import queue
 from typing import Any
 
 
@@ -109,6 +111,23 @@ class BinaryTree:
         self.postorder(root=root.right)
         print(root.val)
 
+    def bfs(self, root: Node):
+        queue = deque()
+        level = 0
+        if root:
+            queue.append(root)
+
+        while len(queue) > 0:
+            for i in range(len(queue)):
+                curr = queue.popleft()
+                print(curr.val)
+                print(f"{level=}")
+                if curr.left:
+                    queue.append(curr.left)
+                if curr.right:
+                    queue.append(curr.right)
+            level += 1
+
 
 if __name__ == "__main__":
     ls = [2, 1, 5, 3]
@@ -124,3 +143,6 @@ if __name__ == "__main__":
     t.inorder(root=t.root)
     t.preorder(root=t.root)
     t.postorder(root=t.root)
+    print("==================================")
+
+    t.bfs(root=t.root)
