@@ -15,3 +15,16 @@ def two_sum(*, nums: list[int], target: int) -> list[int]:
         rem = target - val
         if rem in kv:
             return [idx, kv[rem]]
+
+
+def group_anagrams(*, input: list[str]) -> list[list[str]]:
+    anagram_group: dict[str, list[str]] = {}
+
+    for ip in input:
+        sorted_ip: str = "".join(sorted(ip))
+        if sorted_ip in anagram_group:
+            anagram_group[sorted_ip].append(ip)
+        else:
+            anagram_group[sorted_ip] = [ip]
+
+    return list(anagram_group.values())

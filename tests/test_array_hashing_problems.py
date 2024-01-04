@@ -1,8 +1,9 @@
 import pytest
-from array_hashing.array_hashing_problems import (
+from blind_75.array_hashing.array_hashing_problems import (
     check_duplicates,
     check_anagram,
     two_sum,
+    group_anagrams,
 )
 
 pytestmark = pytest.mark.array_hashing
@@ -20,3 +21,9 @@ def test_anagram():
 
 def test_two_sum():
     assert [0, 1] == two_sum(nums=[2, 7, 11, 15], target=9)
+
+
+def test_group_anagrams():
+    assert [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]] == group_anagrams(
+        input=["eat", "tea", "tan", "ate", "nat", "bat"]
+    )
