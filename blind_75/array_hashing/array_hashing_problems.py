@@ -13,7 +13,7 @@ def two_sum(*, nums: list[int], target: int) -> list[int]:
 
     for idx, val in enumerate(nums):
         rem = target - val
-        if rem in kv:
+        if (rem in kv) and (idx != kv[rem]):
             return [idx, kv[rem]]
 
 
