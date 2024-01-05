@@ -5,6 +5,7 @@ from blind_75.array_hashing.array_hashing_problems import (
     top_k_frequent_elements,
     two_sum,
     group_anagrams,
+    array_product_except_self,
 )
 
 pytestmark = pytest.mark.array_hashing
@@ -41,3 +42,8 @@ def test_top_k_frequent_elements():
     assert [1, 2] == top_k_frequent_elements(nums=[1, 2], k=2)
     assert [0] == top_k_frequent_elements(nums=[3, 0, 1, 0], k=1)
     assert [-1, 2] == top_k_frequent_elements(nums=[4, 1, -1, 2, -1, 2, 3], k=2)
+
+
+def test_array_product_except_self():
+    # https://leetcode.com/problems/product-of-array-except-self/submissions/1137826462/
+    assert [12, 16, 24, 48, 24] == array_product_except_self(nums=[4, 3, 2, 1, 2])

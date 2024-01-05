@@ -45,3 +45,28 @@ def top_k_frequent_elements(*, nums: list[int], k: int) -> list[int]:
     }
 
     return list(sorted_dict.keys())[:k]
+
+
+def array_product_except_self(*, nums: list[int]) -> list[int]:
+    result = []
+    current_product = 1
+    for id, val in enumerate(nums):
+        if id == 0:
+            # No element before
+            current_product = val
+            result.append(1)
+            continue
+        result.append(current_product)
+        current_product *= val
+
+    current_product = 1
+
+    for id in range((len(nums) - 1), -1, -1):
+        if id == len(nums) - 1:
+            result[id] = result[id] * 1
+            current_product = nums[id]
+            continue
+        result[id] = result[id] * current_product
+        current_product *= nums[id]
+
+    return result
