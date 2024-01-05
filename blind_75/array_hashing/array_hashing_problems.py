@@ -31,16 +31,17 @@ def group_anagrams(*, input: list[str]) -> list[list[str]]:
 
 
 def top_k_frequent_elements(*, nums: list[int], k: int) -> list[int]:
-    elments_pos = [[]] * (len(nums) + 1)
     el_counter: dict[int, int] = {}
+
     for el in nums:
         if el in el_counter:
             el_counter[el] += 1
         else:
             el_counter[el] = 1
 
-    for i in range(1, (len(nums) + 1)):
-        elments_pos[i] = [k for k, v in el_counter.items() if v == i]
+    sorted_dict = {
+        k: v
+        for k, v in sorted(el_counter.items(), key=lambda item: item[1], reverse=True)
+    }
 
-    flattend_list = [x for el in elments_pos for x in el]
-    return flattend_list[-k:]
+    return list(sorted_dict.keys())[:k]

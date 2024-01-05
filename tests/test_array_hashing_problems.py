@@ -36,7 +36,7 @@ def test_group_anagrams():
 
 def test_top_k_frequent_elements():
     # https://leetcode.com/problems/top-k-frequent-elements/submissions/1136938469/
-    assert [2, 1] == top_k_frequent_elements(nums=[1, 1, 1, 2, 2, 3], k=2)
+    assert [1, 2] == top_k_frequent_elements(nums=[1, 1, 1, 2, 2, 3], k=2)
     assert [1] == top_k_frequent_elements(nums=[1], k=1)
     assert [1, 2] == top_k_frequent_elements(nums=[1, 2], k=2)
     assert [0] == top_k_frequent_elements(nums=[3, 0, 1, 0], k=1)
