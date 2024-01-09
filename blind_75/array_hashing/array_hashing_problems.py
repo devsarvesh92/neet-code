@@ -81,3 +81,16 @@ def bubble_sort(*, nums: list[int]) -> list[int]:
                 swapped = True
         if not swapped:
             return nums
+
+
+def get_prime_numbers(*, start: int, end: int) -> list[int]:
+    prime_nums = []
+    for num in range(1, end):
+        flag = True
+        for child in range(2, num):
+            if num % child == 0:
+                flag = False
+                break
+        if flag:
+            prime_nums.append(num)
+    return prime_nums

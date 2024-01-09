@@ -7,6 +7,7 @@ from blind_75.array_hashing.array_hashing_problems import (
     group_anagrams,
     array_product_except_self,
     bubble_sort,
+    get_prime_numbers,
 )
 
 pytestmark = pytest.mark.array_hashing
@@ -52,3 +53,7 @@ def test_array_product_except_self():
 
 def test_bubble_sort():
     assert [1, 2, 3, 4, 5] == bubble_sort(nums=[4, 2, 1, 3, 5])
+
+
+def test_prime_numbers():
+    assert [1, 2, 3, 5, 7, 11] == get_prime_numbers(start=1, end=12)
