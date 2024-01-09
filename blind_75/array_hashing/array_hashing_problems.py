@@ -70,3 +70,14 @@ def array_product_except_self(*, nums: list[int]) -> list[int]:
         current_product *= nums[id]
 
     return result
+
+
+def bubble_sort(*, nums: list[int]) -> list[int]:
+    for i in range(0, len(nums) - 1):
+        swapped = False
+        for j in range(0, len(nums) - 1 - i):
+            if nums[j] > nums[j + 1]:
+                nums[j], nums[j + 1] = nums[j + 1], nums[j]
+                swapped = True
+        if not swapped:
+            return nums

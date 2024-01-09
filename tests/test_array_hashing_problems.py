@@ -6,6 +6,7 @@ from blind_75.array_hashing.array_hashing_problems import (
     two_sum,
     group_anagrams,
     array_product_except_self,
+    bubble_sort,
 )
 
 pytestmark = pytest.mark.array_hashing
@@ -47,3 +48,7 @@ def test_top_k_frequent_elements():
 def test_array_product_except_self():
     # https://leetcode.com/problems/product-of-array-except-self/submissions/1137826462/
     assert [12, 16, 24, 48, 24] == array_product_except_self(nums=[4, 3, 2, 1, 2])
+
+
+def test_bubble_sort():
+    assert [1, 2, 3, 4, 5] == bubble_sort(nums=[4, 2, 1, 3, 5])
