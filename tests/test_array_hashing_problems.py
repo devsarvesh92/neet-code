@@ -9,6 +9,7 @@ from blind_75.array_hashing.array_hashing_problems import (
     bubble_sort,
     get_prime_numbers,
     validate_sudoku_board,
+    get_longest_consecutive_sequence,
 )
 
 pytestmark = pytest.mark.array_hashing
@@ -89,3 +90,8 @@ def test_sudoku_board():
             ["9", ".", ".", ".", ".", ".", ".", ".", "."],
         ]
     )
+
+
+def test_longest_consecutive_sequence():
+    https://leetcode.com/problems/longest-consecutive-sequence/submissions/1142576855/
+    assert 4 == get_longest_consecutive_sequence(nums=[100, 4, 200, 1, 3, 2])

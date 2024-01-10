@@ -118,3 +118,17 @@ def validate_sudoku_board(*, board: list[list[str]]) -> bool:
                 row[r].add(value)
                 square[(r // 3, c // 3)].add(value)
     return True
+
+
+def get_longest_consecutive_sequence(nums: list[int]) -> list[int]:
+    unique_nums = set(nums)
+    longest_seq = 0
+    for num in nums:
+        if (num - 1) not in unique_nums:
+            nxt_el = num + 1
+            length = 1
+            while nxt_el in unique_nums:
+                length += 1
+                nxt_el += 1
+            longest_seq = max(length, longest_seq)
+    return longest_seq
