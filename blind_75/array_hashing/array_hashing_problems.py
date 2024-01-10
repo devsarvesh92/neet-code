@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 def check_duplicates(*, nums: list[int]) -> bool:
     if len(set(nums)) != len(nums):
         return True
@@ -94,3 +97,24 @@ def get_prime_numbers(*, start: int, end: int) -> list[int]:
         if flag:
             prime_nums.append(num)
     return prime_nums
+
+
+def validate_sudoku_board(*, board: list[list[str]]) -> bool:
+    col = defaultdict(set)
+    row = defaultdict(set)
+    square = defaultdict(set)
+
+    for r in range(9):
+        for c in range(9):
+            value = board[r][c]
+
+            if value == ".":
+                continue
+
+            if value in row[r] or value in col[c] or value in square[(r // 3, c // 3)]:
+                return False
+            else:
+                col[c].add(value)
+                row[r].add(value)
+                square[(r // 3, c // 3)].add(value)
+    return True
