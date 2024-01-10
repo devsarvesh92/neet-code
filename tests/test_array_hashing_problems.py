@@ -93,5 +93,5 @@ def test_sudoku_board():
 
 
 def test_longest_consecutive_sequence():
-    https://leetcode.com/problems/longest-consecutive-sequence/submissions/1142576855/
+    # https://leetcode.com/problems/longest-consecutive-sequence/submissions/1142576855/
     assert 4 == get_longest_consecutive_sequence(nums=[100, 4, 200, 1, 3, 2])
