@@ -35,3 +35,18 @@ def three_sum(nums: list[int]) -> list[list[int]]:
             elif current_sum < target_sum:
                 i += 1
     return result
+
+
+def container_with_most_water(height:list[int])->int:
+    i,j = 0,len(height)-1
+    max_area=0
+    while i < j:
+        width =abs(i-j)
+        ht = min(height[i],height[j])
+        max_area = max(width*ht,max_area)
+        if height[i] < height[j]:
+            i+=1
+        else:
+            j-=1
+    return max_area
+
