@@ -25,3 +25,35 @@ def find_min(nums: list[int]) -> int:
         else:
             r = mid - 1
     return min_num
+
+
+def search_in_rotated_array(*, nums: list[int], target: int) -> int:
+    # [5,1]
+
+    # If middle in 1st sorted half and start of array is less than target search in first half else 2nd half
+    i, j = 0, len(nums) - 1
+    while i <= j:
+        mid_idx = (i + j) // 2
+        middle = nums[mid_idx]
+        start = nums[i]
+        end = nums[j]
+        if target > middle:
+            if middle >= start:
+                i = mid_idx + 1
+            else:
+                if end >= target:
+                    i = mid_idx + 1
+                else:
+                    j = mid_idx - 1
+        elif target < middle:
+            if middle >= start:
+                if start <= target:
+                    j = mid_idx - 1
+                else:
+                    i = mid_idx + 1
+            else:
+                j = mid_idx - 1
+        else:
+            return mid_idx
+
+    return -1
