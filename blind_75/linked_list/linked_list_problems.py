@@ -52,3 +52,37 @@ class LinkedList:
             prev = curr
             curr = temp
         self.head.nxt = prev
+
+
+def merge_sorted_list(ll1: LinkedList, ll2: LinkedList) -> list[int]:
+    ll = LinkedList()
+    ll1_curr: Node = ll1.head.nxt
+    ll2_curr: Node = ll2.head.nxt
+    curr = Node(nxt=None, val=-1000)
+    ll.head = curr
+
+    while ll1_curr or ll2_curr:
+        if ll1_curr and ll2_curr:
+            if ll1_curr.val < ll2_curr.val:
+                curr.nxt = ll1_curr
+                curr = ll1_curr
+                ll1_curr = ll1_curr.nxt
+            else:
+                curr.nxt = ll2_curr
+                curr = ll2_curr
+                ll2_curr = ll2_curr.nxt
+        elif ll1_curr:
+            curr.nxt = ll1_curr
+            curr = ll1_curr
+            ll1_curr = ll1_curr.nxt
+        elif ll2_curr:
+            curr.nxt = ll2_curr
+            curr = ll2_curr
+            ll2_curr = ll2_curr.nxt
+
+    curr = ll.head.nxt
+    result = []
+    while curr:
+        result.append(curr.val)
+        curr = curr.nxt
+    return result
