@@ -1,3 +1,6 @@
+import copy
+
+
 class Node:
     """
     Represents a node in a linked list.
@@ -53,6 +56,9 @@ class LinkedList:
             curr = temp
         self.head.nxt = prev
 
+    def __eq__(self, __value: object) -> bool:
+        return str(self) == str(__value)
+
 
 def merge_sorted_list(ll1: LinkedList, ll2: LinkedList) -> list[int]:
     ll = LinkedList()
@@ -86,3 +92,28 @@ def merge_sorted_list(ll1: LinkedList, ll2: LinkedList) -> list[int]:
         result.append(curr.val)
         curr = curr.nxt
     return result
+
+
+def reverse_linked_list(ip: LinkedList) -> LinkedList:
+    # reverse a linklist
+    ll2 = copy.deepcopy(ip)
+    # [1, 2, 3, 4]
+    # [4, 3, 2, 1]
+    prev = None
+    curr = ll2.head.nxt
+
+    while curr:
+        # before: head -> curr -> nxt
+        # after: prev <- curr <- nxt
+        temp_nxt = curr.nxt
+        temp_nxt_nxt = temp_nxt.nxt
+
+        curr.nxt = prev
+        temp_nxt.nxt = curr
+
+        prev = temp_nxt
+        curr = temp_nxt_nxt
+
+    ll2.head.nxt = prev
+
+    return ll2
