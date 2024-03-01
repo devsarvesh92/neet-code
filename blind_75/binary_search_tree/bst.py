@@ -37,3 +37,14 @@ class BST:
             traversal.append(root.val)
             traversal = self.inorder_traversal(root=root.right, traversal=traversal)
         return traversal
+
+    def invert(self, root: Node):
+        if root is None:
+            return
+
+        tmp = root.left
+        root.left = root.right
+        root.right = tmp
+
+        self.invert(root=root.left)
+        self.invert(root=root.right)
