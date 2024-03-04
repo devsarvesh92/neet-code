@@ -38,6 +38,14 @@ class BST:
             traversal = self.inorder_traversal(root=root.right, traversal=traversal)
         return traversal
 
+    def max_depth(self, root: Node) -> int:
+        if not root:
+            return 0
+        else:
+            left_depth = self.max_depth(root=root.left)
+            right_depth = self.max_depth(root=root.right)
+            return max(left_depth, right_depth) + 1
+
     def invert(self, root: Node):
         if root is None:
             return
