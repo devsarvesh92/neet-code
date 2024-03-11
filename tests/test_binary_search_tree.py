@@ -32,3 +32,19 @@ def test_depth_of_binary_tree():
         bst.insert(val=num)
 
     assert 3 == bst.max_depth(root=bst.root)
+
+
+def test_same_binary_tree():
+    bst1 = BST()
+    bst1.insert(val=4)
+    for num in [1, 2, 3]:
+        bst1.insert(val=num)
+
+    bst2 = BST()
+    bst2.insert(val=4)
+    for num in [1, 2, 3]:
+        bst2.insert(val=num)
+
+    assert bst1.inorder_traversal(bst1.root, traversal=[]) == bst2.inorder_traversal(
+        bst2.root, traversal=[]
+    )
