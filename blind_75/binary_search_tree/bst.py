@@ -56,3 +56,24 @@ class BST:
 
         self.invert(root=root.left)
         self.invert(root=root.right)
+
+    def same_tree(self, s, t):
+        if not s and not t:
+            return True
+
+        if s and t and s.val == t.val:
+            return self.same_tree(s.left, t.left) and self.same_tree(s.right, t.right)
+
+        return False
+
+    def subtree(self, s, t):
+        if not t:
+            return True
+        if not s:
+            return False
+
+        if self.same_tree(s, t):
+            return True
+
+        self.subtree(s.left, t)
+        self.subtree(s.right, t)

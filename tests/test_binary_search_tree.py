@@ -48,3 +48,16 @@ def test_same_binary_tree():
     assert bst1.inorder_traversal(bst1.root, traversal=[]) == bst2.inorder_traversal(
         bst2.root, traversal=[]
     )
+
+
+def test_sub_tree():
+    bst1 = BST()
+    bst1.insert(val=3)
+    for node in [4, 5, 1, 2]:
+        bst1.insert(val=node)
+
+    subtree = BST()
+    for node in [4, 1, 2]:
+        subtree.insert(val=node)
+
+    assert True is bst1.subtree(bst1.root, subtree.root)
