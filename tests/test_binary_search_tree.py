@@ -52,12 +52,12 @@ def test_same_binary_tree():
 
 def test_sub_tree():
     bst1 = BST()
-    bst1.insert(val=3)
-    for node in [4, 5, 1, 2]:
+    bst1.insert(val=4)
+    for node in [5, 1]:
         bst1.insert(val=node)
 
     subtree = BST()
-    for node in [4, 1, 2]:
+    for node in [4, 5, 1]:
         subtree.insert(val=node)
 
-    assert True is bst1.subtree(bst1.root, subtree.root)
+    assert True is BST.subtree(bst1.root, subtree.root)
